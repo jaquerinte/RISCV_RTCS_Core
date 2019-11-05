@@ -1,0 +1,316 @@
+`define SIM 1
+#define CODER_0 "Jaquer AND VORIXO"
+
+module memory(WORD_SIZE = 32, WORDS_PER_LINES = 4, LINE_SIZE = 128, MEMORY_LINES = 32){
+    #function "Memory emulator for the processor"
+    #description "Memory simulation using a 32 bit size and a LINE_SIZE of 128 with a delay in 3 cycles for geting the data"
+    #coder CODER_0
+
+    in clk;
+    in rstn;
+    in we;
+    in strobe;
+    in  [LINE_SIZE-1:0]data;
+    in  [WORD_SIZE-1:0]addr;
+    out [LINE_SIZE-1:0]data;
+    out valid_data;
+    // dump of the code for the memory
+    $$
+    reg [WORD_SIZE-1:0] main_mem [0:MEMORY_LINES-1];
+    reg [LINE_SIZE-1:0] data_o_0;
+    reg [LINE_SIZE-1:0] data_o_1;
+    reg [LINE_SIZE-1:0] data_o_2;
+    reg [LINE_SIZE-1:0] data_o_3; 
+    reg [LINE_SIZE-1:0] data_o_4;    
+    reg valid_0; 
+    reg valid_1;
+    reg valid_2;
+    reg valid_3;
+    reg valid_4;
+    `ifdef SIM
+        initial begin
+        $display("Loading rom.");
+        $readmemh("../../../memory.hex", main_mem);
+        $display("Rom loaded");
+        end
+    `endif
+
+    always @(posedge clk_i) begin
+        // data_o_0 <= {WORD_SIZE{1'b0}};
+        valid_0 <=0;                           
+        if (!rstn_i) begin                                       
+            // reset                                            
+            integer i;         
+            /* verilator lint_off BLKLOOPINIT*/                                 
+            for(i=0;i<MEMORY_LINES; i=i+1) begin                 
+                main_mem[i] <= {WORD_SIZE{1'b0}};                
+            end   
+            /* verilator lint_on BLKLOOPINIT*/                                             
+                                                                
+        end                                                  
+        else if (we_i) begin                                 
+            main_mem[addr_i] <= data_i[31:0] ;                         
+                                                                
+        end else if (strobe_i) begin                        
+            data_o_0[31:0] <=  main_mem[addr_i>>5]; 
+            data_o_0[63:32] <= main_mem[(addr_i>>5)+1];
+            data_o_0[95:64] <= main_mem[(addr_i>>5)+2];          
+            data_o_0[127:96] <= main_mem[(addr_i>>5)+3]; 
+            //data_o_0[31:0] <=  main_mem[addr_i];           
+            //data_o_0[63:32] <= main_mem[addr_i + 2'b01];
+            //data_o_0[95:64] <= main_mem[addr_i + 2'b10];                 
+            //data_o_0[127:96] <= main_mem[addr_i + 2'b11]; 
+            valid_0 <= 1;                    
+                                                                
+        end
+        data_o <= data_o_4;
+        valid_data_o <= valid_4;
+        data_o_4 <=  data_o_3;
+        valid_4 <= valid_3;
+        data_o_3 <= data_o_2;
+        valid_3 <= valid_2;
+        data_o_2 <= data_o_1;
+        valid_2 <= valid_1;
+        data_o_1 <= data_o_0;
+        valid_1 <= valid_0;
+
+    end   
+    $$
+
+}
+
+
+module fetch(WORD_SIZE= 32, LINE_SIZE=128, WORDS_PER_LINES = 4, MEMORY_LINES = 4, TAG=24, OFFSET=7){
+    #function "fetch instruction form the I-cache"
+    #description "This module is for the feching instruction from the I-cahe in order to provided to the processor"
+    #coder CODER_0
+    in clk;
+    in rstn;
+    //in [WORD_SIZE-1:0] rm0; // PC
+    in [LINE_SIZE-1:0] data;
+    in valid_input;
+    out [WORD_SIZE-1:0] nrm0; // nextPC
+    out [WORD_SIZE-1:0] addr;
+    out [WORD_SIZE-1:0] instruction_register;
+    out ask_memory;
+    out valid; // if the output is valid
+
+    //vwire [WORD_SIZE-1:0]next_pc;
+
+    /*ICache:IC(){
+        in clk = in clk,
+        in rstn = in rstn,
+        in addr = next_pc,
+        in data = in data_bus,
+        in store_data = in valid_input,
+        out data = out instruction_register,
+        out addr = out addr_bus,
+        out valid_data = out valid,
+        out ask_memory = out ask_memory
+    };*/
+
+    $$
+    localparam NUM_SETS_CACHE = ((LINE_SIZE * MEMORY_LINES)/(LINE_SIZE *2));
+    localparam WIDE_CACHE_LINE = (TAG*2 + LINE_SIZE*2 + 3);
+    localparam INIT_POS_TAG_WAY_1 = 2;
+    localparam INIT_POS_TAG_WAY_2 = 3+TAG+LINE_SIZE;
+    localparam END_POS_TAG_WAY_1 = TAG+1;
+    localparam END_POS_TAG_WAY_2 = TAG+2+LINE_SIZE+TAG;
+    // params for cache word acces
+    // way 1
+    localparam INIT_POS_WORD_1_WAY_1 = TAG+2;
+    localparam END_POS_WORD_1_WAY_1 = TAG+2+WORD_SIZE-1;
+    localparam INIT_POS_WORD_2_WAY_1 = TAG+WORD_SIZE+2;
+    localparam END_POS_WORD_2_WAY_1 = TAG+2+WORD_SIZE+WORD_SIZE-1;
+    localparam INIT_POS_WORD_3_WAY_1 = TAG+WORD_SIZE+WORD_SIZE+2;
+    localparam END_POS_WORD_3_WAY_1 = TAG+2+WORD_SIZE+WORD_SIZE+WORD_SIZE-1;
+    localparam INIT_POS_WORD_4_WAY_1 = TAG+WORD_SIZE+WORD_SIZE+WORD_SIZE+2;
+    localparam END_POS_WORD_4_WAY_1 = TAG+2+WORD_SIZE+WORD_SIZE+WORD_SIZE+WORD_SIZE-1;
+    
+    // way 2
+    localparam INIT_POS_WORD_1_WAY_2 = TAG+TAG+3+LINE_SIZE;
+    localparam END_POS_WORD_1_WAY_2 = TAG+3+TAG+LINE_SIZE+WORD_SIZE-1;
+    localparam INIT_POS_WORD_2_WAY_2 = TAG+TAG+WORD_SIZE+3+LINE_SIZE;
+    localparam END_POS_WORD_2_WAY_2 = TAG+3+TAG+LINE_SIZE+WORD_SIZE+WORD_SIZE-1;
+    localparam INIT_POS_WORD_3_WAY_2 = TAG+TAG+WORD_SIZE+WORD_SIZE+3+LINE_SIZE;
+    localparam END_POS_WORD_3_WAY_2 = TAG+3+TAG+LINE_SIZE+WORD_SIZE+WORD_SIZE+WORD_SIZE-1;
+    localparam INIT_POS_WORD_4_WAY_2 = TAG+TAG+WORD_SIZE+WORD_SIZE+WORD_SIZE+3+LINE_SIZE;
+    localparam END_POS_WORD_4_WAY_2 = TAG+3+TAG+LINE_SIZE+WORD_SIZE+WORD_SIZE+WORD_SIZE+WORD_SIZE-1;
+    
+    // block 0 --> block in way 0
+    localparam INIT_POS_LINE_0 = TAG+2;
+    localparam END_POS_LINE_0 = TAG+2+LINE_SIZE-1;
+    localparam INIT_POS_TAG_LINE_0 = 2;
+    localparam END_POS_TAG_LINE_0 = TAG+1;
+    localparam VALID_BIT_WAY_0 = 1;
+
+    // block 1
+
+    localparam INIT_POS_LINE_1 = TAG+TAG+3+LINE_SIZE;
+    localparam END_POS_LINE_1 = TAG+3+TAG+LINE_SIZE+LINE_SIZE-1;
+    localparam INIT_POS_TAG_LINE_1 = 3+TAG+LINE_SIZE;
+    localparam END_POS_TAG_LINE_1 = TAG+2+LINE_SIZE+TAG;
+    localparam VALID_BIT_WAY_1 = TAG+2+LINE_SIZE;
+
+    reg [WORD_SIZE-1:0]addr_asked;
+    reg addr_ask;
+    reg [WIDE_CACHE_LINE-1:0] cache_men [0:NUM_SETS_CACHE-1];
+
+    reg [WORD_SIZE-1:0] rm0;
+
+
+    //assign next_pc_w = !rstn_i ? {WORD_SIZE{1'b0}} : valid_o ? rm0 + 32 :  rm0;
+    always @(posedge clk_i) begin
+
+        ask_memory_o <= 1'b0;
+        if (!rstn_i) begin                                       
+            // reset                                            
+            integer i;         
+            /* verilator lint_off BLKLOOPINIT*/                                 
+            for(i=0;i<NUM_SETS_CACHE; i=i+1) begin                 
+                cache_men[i] <= {WIDE_CACHE_LINE{1'b0}};                
+            end   
+            /* verilator lint_on BLKLOOPINIT*/
+            rm0 <= {WORD_SIZE{1'b0}};
+        end
+        else begin
+            //rm0 <= next_pc_w;
+            // take the rm0 and check if is in catch
+            // check if is in way 1 or 0
+            // check way 0 and valid 23/7
+            if(cache_men[rm0[OFFSET]][END_POS_TAG_WAY_1:INIT_POS_TAG_WAY_1] == rm0[WORD_SIZE-1:OFFSET+1] && cache_men[rm0[OFFSET]][VALID_BIT_WAY_0]) begin
+                // hit in way 0
+                // rm0[WORD_SIZE-1:TAG] is offset
+                valid_o <= 1;
+                rm0 <= rm0 +32;
+                nrm0_o <= rm0 +32;
+
+                if(rm0[OFFSET-1:OFFSET-2] == 2'b00) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_1_WAY_1:INIT_POS_WORD_1_WAY_1];
+                end
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b01) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_2_WAY_1:INIT_POS_WORD_2_WAY_1];
+                end
+
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b10) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_3_WAY_1:INIT_POS_WORD_3_WAY_1];
+                end
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b11)begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_4_WAY_1:INIT_POS_WORD_4_WAY_1];
+                end
+
+
+                
+            end
+            // check way 1 and valid 
+            else if(cache_men[rm0[OFFSET]][END_POS_TAG_WAY_2:INIT_POS_TAG_WAY_2] == rm0[WORD_SIZE-1:OFFSET+1] && cache_men[rm0[OFFSET]][VALID_BIT_WAY_1]) begin
+                // hit in way 1
+                valid_o <= 1;
+                rm0 <= rm0 +32;
+                nrm0_o <= rm0 +32;
+
+                if(rm0[OFFSET-1:OFFSET-2] == 2'b00) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_1_WAY_2:INIT_POS_WORD_1_WAY_2];
+                end
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b01) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_2_WAY_2:INIT_POS_WORD_2_WAY_2];
+                end
+
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b10) begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_3_WAY_2:INIT_POS_WORD_3_WAY_2];
+                end
+                else if (rm0[OFFSET-1:OFFSET-2] == 2'b11)begin
+                    instruction_register_o <= cache_men[rm0[OFFSET]][END_POS_WORD_4_WAY_2:INIT_POS_WORD_4_WAY_2];
+                end
+
+                
+            end
+            else if (addr_ask && valid_input_i) begin
+                if(cache_men[addr_asked[OFFSET]][0]) begin
+                    // LRU == 1 replace way 1
+                    // replace LRU
+                    cache_men[addr_asked[OFFSET]][0] <= 1'b0;
+                    // store block in way 1
+                    cache_men[addr_asked[OFFSET]][END_POS_LINE_1:INIT_POS_LINE_1] <= data_i;
+                    // set the valid bit
+                    cache_men[addr_asked[OFFSET]][VALID_BIT_WAY_1] <= 1'b1;
+                    // store the tag
+                    cache_men[addr_asked[OFFSET]][END_POS_TAG_LINE_1:INIT_POS_TAG_LINE_1] <= addr_asked[WORD_SIZE-1:OFFSET+1];
+                    // set the ask
+                    addr_ask <= 1'b0;
+
+                end
+                else begin
+                    // LRU == 0 replace way 0
+                    // replace LRU
+                    cache_men[addr_asked[OFFSET]][0] <= 1'b1;
+                    // store block in way 0
+                    cache_men[addr_asked[OFFSET]][END_POS_LINE_0:INIT_POS_LINE_0] <= data_i;
+                    // set bit to valid
+                    cache_men[addr_asked[OFFSET]][VALID_BIT_WAY_0] <= 1'b1;
+                    //store the tag
+                    cache_men[addr_asked[OFFSET]][END_POS_TAG_LINE_0:INIT_POS_TAG_LINE_0] <= addr_asked[WORD_SIZE-1:OFFSET+1];
+                    // set the ask
+                    addr_ask <= 1'b0;
+
+                end
+            end
+            else if (addr_ask && rm0 == addr_asked) begin
+                // same addr ask 
+                valid_o <= 0;
+            end
+            else begin
+                // Mis go to main memory
+                addr_asked <= rm0;
+                addr_ask <= 1'b1;
+                valid_o <= 0;
+                addr_o <= rm0;
+                ask_memory_o <= 1'b1;
+
+            end 
+        end
+
+    end
+    //assign next_pc_w = !rstn_i ? {WORD_SIZE{1'b0}} : valid_o ? rm0 + 32 :  rm0;
+    //assign nrm0_o = next_pc_w;
+    $$
+
+
+}
+
+module top processor(WORD_SIZE = 32, REGISTERS = 32, LINE_SIZE=128,ALUOP_SIZE=4,REGDIRSIZE=5){
+    #function "Main processor "
+    #description "This is the main processor"
+    #coder CODER_0
+
+    in clk;
+    in rstn;
+
+    // vwires for interconect
+    vwire [LINE_SIZE-1:0] mem_data_bus;
+    vwire write_data_bus_mem;
+    vwire strobe_main_memory;
+
+    fetch:IF(){
+        in clk = in clk,
+        in rstn = in rstn,
+        in data = mem_data_bus,
+        out ask_memory = strobe_main_memory
+    };
+     
+    memory:MEM(){
+        in clk = in clk,
+        in rstn = in rstn,
+        in we = write_data_bus_mem,
+        in data = mem_data_bus,
+        in strobe = strobe_main_memory,
+        out data = mem_data_bus
+    };
+
+    // wires between IF and MEM
+    wire [WORD_SIZE-1:0] IF.addr -> MEM.addr;
+    // wires between MEM and IF
+    wire MEM.valid_data -> IF.valid_input;
+}
+
+

@@ -29,7 +29,7 @@ SWERV_CONFIG = ${RV_ROOT}/configs/swerv.config
 IRUN = irun
 VCS = vcs
 VERILATOR = verilator
-GCC_PREFIX = riscv64-unknown-elf
+GCC_PREFIX = /opt/riscv/bin/riscv64-unknown-elf
 
 # Define test name
 ifeq ($(strip $(ASM_TEST)),)
