@@ -32,12 +32,17 @@ VL_MODULE(Vprocessor) {
     VL_SIG8(processor__DOT__write_data_bus_mem_w,0,0);
     VL_SIG8(processor__DOT__strobe_main_memory_w,0,0);
     VL_SIG8(processor__DOT__inst_IF__DOT__valid_o,0,0);
+    VL_SIG8(processor__DOT__inst_IF__DOT__line_index_w,0,0);
     VL_SIG8(processor__DOT__inst_IF__DOT__addr_ask,0,0);
+    VL_SIG8(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_4,5,0);
+    VL_SIG8(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_5,2,0);
+    VL_SIG8(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_6,0,0);
     VL_SIG8(processor__DOT__inst_MEM__DOT__valid_0,0,0);
     VL_SIG8(processor__DOT__inst_MEM__DOT__valid_1,0,0);
     VL_SIG8(processor__DOT__inst_MEM__DOT__valid_2,0,0);
     VL_SIG8(processor__DOT__inst_MEM__DOT__valid_3,0,0);
     VL_SIG8(processor__DOT__inst_MEM__DOT__valid_4,0,0);
+    VL_SIG16(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_3,11,0);
     VL_SIG(processor__DOT__addr_IF_MEM,31,0);
     VL_SIGW(processor__DOT__mem_data_bus_w,127,0,4);
     VL_SIG(processor__DOT__inst_IF__DOT__nrm0_o,31,0);
@@ -45,12 +50,21 @@ VL_MODULE(Vprocessor) {
     VL_SIG(processor__DOT__inst_IF__DOT__addr_asked,31,0);
     VL_SIG(processor__DOT__inst_IF__DOT__rm0,31,0);
     VL_SIG(processor__DOT__inst_IF__DOT__unnamedblk1__DOT__i,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_0,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_1,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_2,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_3,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_4,31,0);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__rotate_5,31,0);
+    VL_SIGW(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_0,95,0,3);
+    VL_SIG(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_2,23,0);
     VL_SIGW(processor__DOT__inst_MEM__DOT__data_o_0,127,0,4);
     VL_SIGW(processor__DOT__inst_MEM__DOT__data_o_1,127,0,4);
     VL_SIGW(processor__DOT__inst_MEM__DOT__data_o_2,127,0,4);
     VL_SIGW(processor__DOT__inst_MEM__DOT__data_o_3,127,0,4);
     VL_SIGW(processor__DOT__inst_MEM__DOT__data_o_4,127,0,4);
     VL_SIG(processor__DOT__inst_MEM__DOT__unnamedblk1__DOT__i,31,0);
+    VL_SIG64(processor__DOT__inst_IF__DOT__inst_hcf__DOT__output_xor_1,47,0);
     VL_SIGW(processor__DOT__inst_IF__DOT__cache_men[2],306,0,10);
     VL_SIG(processor__DOT__inst_MEM__DOT__main_mem[32],31,0);
     
@@ -103,8 +117,9 @@ VL_MODULE(Vprocessor) {
   public:
     static void _eval_initial(Vprocessor__Syms* __restrict vlSymsp);
     static void _eval_settle(Vprocessor__Syms* __restrict vlSymsp);
-    static void _initial__TOP__2(Vprocessor__Syms* __restrict vlSymsp);
+    static void _initial__TOP__3(Vprocessor__Syms* __restrict vlSymsp);
     static void _sequent__TOP__1(Vprocessor__Syms* __restrict vlSymsp);
+    static void _settle__TOP__2(Vprocessor__Syms* __restrict vlSymsp);
     static void traceChgThis(Vprocessor__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
     static void traceChgThis__2(Vprocessor__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
     static void traceChgThis__3(Vprocessor__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);

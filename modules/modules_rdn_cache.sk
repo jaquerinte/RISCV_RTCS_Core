@@ -1,5 +1,5 @@
 `define SIM 1
-#define CODER_0 "Jaquer AND VORIXO"
+#define CODER_0 "Jaquer AND Barrera"
 
 module memory(WORD_SIZE = 32, WORDS_PER_LINES = 4, LINE_SIZE = 128, MEMORY_LINES = 32){
     #function "Memory emulator for the processor"
@@ -79,6 +79,76 @@ module memory(WORD_SIZE = 32, WORDS_PER_LINES = 4, LINE_SIZE = 128, MEMORY_LINES
 
 }
 
+module random_number_generator(WORD_SIZE= 32){
+    #function "Generate random number"
+    #description "Generate a random number and send by the output"
+    in clk;
+    out [WORD_SIZE-1:0] output_number;
+
+    $$
+    assign output_number_o =  32'b00000001010000100100101111001001;
+    $$
+
+    
+}
+
+module hash_cache_function(WORD_SIZE= 32){
+    #function "Generate the hash function"
+    #description "Generate all function"
+    in clk;
+    in [WORD_SIZE-1:0] addr;
+    out line_index;
+    vwire [WORD_SIZE-1:0] random_number;
+
+    random_number_generator:RNG(){
+        in clk = in clk,
+        out output_number = random_number
+    };
+
+    $$
+    reg [WORD_SIZE-1:0] rotate_0;
+    reg [WORD_SIZE-1:0] rotate_1;
+    reg [WORD_SIZE-1:0] rotate_2;
+    reg [WORD_SIZE-1:0] rotate_3;
+    reg [WORD_SIZE-1:0] rotate_4;
+    reg [WORD_SIZE-1:0] rotate_5;
+    wire [(WORD_SIZE*3)-1:0] output_xor_0;
+    wire [48-1:0] output_xor_1;
+    wire [24-1:0] output_xor_2;
+    wire [12-1:0] output_xor_3;
+    wire [6-1:0] output_xor_4;
+    wire [3-1:0] output_xor_5;
+    wire output_xor_6;
+    
+
+    assign output_xor_0 = {rotate_0,rotate_1,rotate_2} ^ {rotate_3,rotate_4,rotate_5};
+    assign output_xor_1 = output_xor_0[95:48] ^ output_xor_0[47:0];
+    assign output_xor_2 = output_xor_1[47:24] ^ output_xor_1[23:0];
+    assign output_xor_3 = output_xor_2[23:12] ^ output_xor_2[11:0];
+    assign output_xor_4 = output_xor_3[11:6] ^ output_xor_3[5:0];
+    assign output_xor_5 = output_xor_4[5:3] ^ output_xor_4[2:0];
+    assign line_index_o = output_xor_5[2] ^ output_xor_5[1] ^ output_xor_5[0];
+
+    always @(posedge clk_i) begin
+
+
+    rotate_0  <= (random_number_w >> addr_i[11:7]) | (random_number_w <<  (WORD_SIZE - {{27{1'b0}},addr_i[11:7]}));
+    rotate_1  <= (random_number_w >> addr_i[16:12]) | (random_number_w <<  (WORD_SIZE - {{27{1'b0}},addr_i[16:12]}));
+    rotate_2  <= (random_number_w >> addr_i[21:17]) | (random_number_w <<  (WORD_SIZE - {{27{1'b0}},addr_i[21:17]}));
+
+    rotate_3  <= ({addr_i[31:7],7'b0000000} >> random_number_w[4:0]) | ({addr_i[31:7],7'b0000000} <<  (WORD_SIZE - {{27{1'b0}},random_number_w[4:0]}));
+    rotate_4  <= ({addr_i[31:7],7'b0000000} >> random_number_w[9:5]) | ({addr_i[31:7],7'b0000000} <<  (WORD_SIZE - {{27{1'b0}},random_number_w[9:5]}));
+    rotate_5  <= ({addr_i[31:7],7'b0000000} >> random_number_w[14:10]) | ({addr_i[31:7],7'b0000000} <<  (WORD_SIZE - {{27{1'b0}},random_number_w[14:10]}));
+
+
+
+    end
+
+
+    $$
+
+}
+
 
 module fetch(WORD_SIZE= 32, LINE_SIZE=128, WORDS_PER_LINES = 4, MEMORY_LINES = 4, TAG=24, OFFSET=7){
     #function "fetch instruction form the I-cache"
@@ -94,20 +164,15 @@ module fetch(WORD_SIZE= 32, LINE_SIZE=128, WORDS_PER_LINES = 4, MEMORY_LINES = 4
     out [WORD_SIZE-1:0] instruction_register;
     out ask_memory;
     out valid; // if the output is valid
+    vwire line_index;
 
     //vwire [WORD_SIZE-1:0]next_pc;
-
-    /*ICache:IC(){
+    hash_cache_function:hcf(){
         in clk = in clk,
-        in rstn = in rstn,
-        in addr = next_pc,
-        in data = in data_bus,
-        in store_data = in valid_input,
-        out data = out instruction_register,
-        out addr = out addr_bus,
-        out valid_data = out valid,
-        out ask_memory = out ask_memory
-    };*/
+        in addr = in addr,
+        out line_index = line_index
+    };
+
 
     $$
     localparam NUM_SETS_CACHE = ((LINE_SIZE * MEMORY_LINES)/(LINE_SIZE *2));
@@ -226,16 +291,16 @@ module fetch(WORD_SIZE= 32, LINE_SIZE=128, WORDS_PER_LINES = 4, MEMORY_LINES = 4
                 
             end
             else if (addr_ask && valid_input_i) begin
-                if(cache_men[addr_asked[OFFSET]][0]) begin
+                if(cache_men[line_index_w][0]) begin
                     // LRU == 1 replace way 1
                     // replace LRU
-                    cache_men[addr_asked[OFFSET]][0] <= 1'b0;
+                    cache_men[line_index_w][0] <= 1'b0;
                     // store block in way 1
-                    cache_men[addr_asked[OFFSET]][END_POS_LINE_1:INIT_POS_LINE_1] <= data_i;
+                    cache_men[line_index_w][END_POS_LINE_1:INIT_POS_LINE_1] <= data_i;
                     // set the valid bit
-                    cache_men[addr_asked[OFFSET]][VALID_BIT_WAY_1] <= 1'b1;
+                    cache_men[line_index_w][VALID_BIT_WAY_1] <= 1'b1;
                     // store the tag
-                    cache_men[addr_asked[OFFSET]][END_POS_TAG_LINE_1:INIT_POS_TAG_LINE_1] <= addr_asked[WORD_SIZE-1:OFFSET+1];
+                    cache_men[line_index_w][END_POS_TAG_LINE_1:INIT_POS_TAG_LINE_1] <= addr_asked[WORD_SIZE-1:OFFSET+1];
                     // set the ask
                     addr_ask <= 1'b0;
 
@@ -243,13 +308,13 @@ module fetch(WORD_SIZE= 32, LINE_SIZE=128, WORDS_PER_LINES = 4, MEMORY_LINES = 4
                 else begin
                     // LRU == 0 replace way 0
                     // replace LRU
-                    cache_men[addr_asked[OFFSET]][0] <= 1'b1;
+                    cache_men[line_index_w][0] <= 1'b1;
                     // store block in way 0
-                    cache_men[addr_asked[OFFSET]][END_POS_LINE_0:INIT_POS_LINE_0] <= data_i;
+                    cache_men[line_index_w][END_POS_LINE_0:INIT_POS_LINE_0] <= data_i;
                     // set bit to valid
-                    cache_men[addr_asked[OFFSET]][VALID_BIT_WAY_0] <= 1'b1;
+                    cache_men[line_index_w][VALID_BIT_WAY_0] <= 1'b1;
                     //store the tag
-                    cache_men[addr_asked[OFFSET]][END_POS_TAG_LINE_0:INIT_POS_TAG_LINE_0] <= addr_asked[WORD_SIZE-1:OFFSET+1];
+                    cache_men[line_index_w][END_POS_TAG_LINE_0:INIT_POS_TAG_LINE_0] <= addr_asked[WORD_SIZE-1:OFFSET+1];
                     // set the ask
                     addr_ask <= 1'b0;
 
