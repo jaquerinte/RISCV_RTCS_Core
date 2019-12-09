@@ -1,77 +1,29 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Mon Nov 11 16:07:50 2019
+[*] Tue Nov 12 11:35:26 2019
 [*]
-[dumpfile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/modules/modules/tb/verilator/obj_dir/Vhash_cache_function.vcd"
-[dumpfile_mtime] "Mon Nov 11 16:07:05 2019"
-[dumpfile_size] 2749
+[dumpfile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/modules/modules/tb/verilator/obj_dir/Vprocessor.vcd"
+[dumpfile_mtime] "Tue Nov 12 11:34:24 2019"
+[dumpfile_size] 13397
 [savefile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/modules/modules/tb/verilator/test.gtkw"
 [timestart] 0
 [size] 1853 1025
 [pos] -1 -1
-*-1.918716 8 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-1.918716 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] TOP.
+[treeopen] TOP.processor.
+[treeopen] TOP.processor.inst_IF.
 [sst_width] 223
 [signals_width] 526
 [sst_expanded] 1
 [sst_vpaned_height] 302
 @28
 TOP.clk_i
-TOP.hash_cache_function.addr_i[31:0]
-TOP.hash_cache_function.random_number_w[31:0]
-@c00022
-TOP.hash_cache_function.rotate_0[31:0]
-@28
-(0)TOP.hash_cache_function.rotate_0[31:0]
-(1)TOP.hash_cache_function.rotate_0[31:0]
-(2)TOP.hash_cache_function.rotate_0[31:0]
-(3)TOP.hash_cache_function.rotate_0[31:0]
-(4)TOP.hash_cache_function.rotate_0[31:0]
-(5)TOP.hash_cache_function.rotate_0[31:0]
-(6)TOP.hash_cache_function.rotate_0[31:0]
-(7)TOP.hash_cache_function.rotate_0[31:0]
-(8)TOP.hash_cache_function.rotate_0[31:0]
-(9)TOP.hash_cache_function.rotate_0[31:0]
-(10)TOP.hash_cache_function.rotate_0[31:0]
-(11)TOP.hash_cache_function.rotate_0[31:0]
-(12)TOP.hash_cache_function.rotate_0[31:0]
-(13)TOP.hash_cache_function.rotate_0[31:0]
-(14)TOP.hash_cache_function.rotate_0[31:0]
-(15)TOP.hash_cache_function.rotate_0[31:0]
-(16)TOP.hash_cache_function.rotate_0[31:0]
-(17)TOP.hash_cache_function.rotate_0[31:0]
-(18)TOP.hash_cache_function.rotate_0[31:0]
-(19)TOP.hash_cache_function.rotate_0[31:0]
-(20)TOP.hash_cache_function.rotate_0[31:0]
-(21)TOP.hash_cache_function.rotate_0[31:0]
-(22)TOP.hash_cache_function.rotate_0[31:0]
-(23)TOP.hash_cache_function.rotate_0[31:0]
-(24)TOP.hash_cache_function.rotate_0[31:0]
-(25)TOP.hash_cache_function.rotate_0[31:0]
-(26)TOP.hash_cache_function.rotate_0[31:0]
-(27)TOP.hash_cache_function.rotate_0[31:0]
-(28)TOP.hash_cache_function.rotate_0[31:0]
-(29)TOP.hash_cache_function.rotate_0[31:0]
-(30)TOP.hash_cache_function.rotate_0[31:0]
-(31)TOP.hash_cache_function.rotate_0[31:0]
-@1401200
--group_end
 @22
-TOP.hash_cache_function.rotate_1[31:0]
-TOP.hash_cache_function.rotate_2[31:0]
-TOP.hash_cache_function.rotate_3[31:0]
-TOP.hash_cache_function.rotate_4[31:0]
-TOP.hash_cache_function.rotate_5[31:0]
-TOP.hash_cache_function.output_xor_0[95:0]
-TOP.hash_cache_function.output_xor_1[47:0]
-TOP.hash_cache_function.output_xor_2[23:0]
-TOP.hash_cache_function.output_xor_3[11:0]
-TOP.hash_cache_function.output_xor_4[5:0]
-@28
-TOP.hash_cache_function.output_xor_5[2:0]
+TOP.processor.inst_IF.rm0[31:0]
+TOP.processor.inst_IF.cache_men(0)[306:0]
+TOP.processor.inst_IF.cache_men(1)[306:0]
 @29
-TOP.hash_cache_function.output_xor_6[1:0]
-@28
-TOP.hash_cache_function.line_index_o
+TOP.processor.inst_IF.inst_hcf.line_index_o
 [pattern_trace] 1
 [pattern_trace] 0

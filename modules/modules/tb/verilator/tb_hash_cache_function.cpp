@@ -100,7 +100,9 @@ TestCase test_cases[] {
     { "step1"       , 0x20},
     { "step2"       , 0x40},
     { "step3"       , 0x60},
+    { "step3"       , 0x80},
     { "step4"       , 0x56E57F00},
+    { "step5"       , 0x495E6FC9},
     { "step5"       , 0xFFFFFFFF},
 };
 

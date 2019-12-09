@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sun Dec  8 21:31:43 2019
+[*]
+[dumpfile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/sim.vcd"
+[dumpfile_mtime] "Sun Dec  8 21:29:24 2019"
+[dumpfile_size] 60134315
+[savefile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/data.gtkw"
+[timestart] 0
+[size] 1853 1025
+[pos] -29 -29
+*0.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_top.
+[treeopen] tb_top.rvtop.
+[treeopen] tb_top.rvtop.swerv.
+[treeopen] tb_top.rvtop.swerv.ifu.
+[sst_width] 223
+[signals_width] 286
+[sst_expanded] 1
+[sst_vpaned_height] 301
+@28
+tb_top.rvtop.swerv.ifu.clk
+@23
+tb_top.rvtop.swerv.ifu.ifc_fetch_addr_f1_scramble[31:1]
+@22
+tb_top.rvtop.swerv.ifu.ifc_fetch_addr_f1[31:1]
+[pattern_trace] 1
+[pattern_trace] 0

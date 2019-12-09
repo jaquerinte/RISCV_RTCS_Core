@@ -2692,6 +2692,7 @@ VL_MODULE(Vtb_top) {
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__compress2__DOT__l3,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__compress2__DOT__sjald,20,1);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__compress2__DOT__sluimmd,31,12);
+	VL_SIGW(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__inst_hcf__DOT__output_xor_0,92,0,3);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__mem_ctl__DOT__imb_in,31,1);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__mem_ctl__DOT__ifu_ic_rw_int_addr,31,1);
 	VL_SIGW(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__mem_ctl__DOT__ic_final_data,127,0,4);
@@ -2734,9 +2735,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__dt,25,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__e1t_in,25,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__e2t_in,25,0);
-	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__e3t_in,25,0);
     };
     struct {
+	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__e3t_in,25,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__i0_inst_d,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__i0_inst_e1,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__decode__DOT__i1_inst_e1,31,0);
@@ -2800,9 +2801,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__arf__DOT__w0v,31,1);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__arf__DOT__w1v,31,1);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__arf__DOT__w2v,31,1);
-	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__arf__DOT__gpr_bank_wr_en,31,1);
     };
     struct {
+	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__arf__DOT__gpr_bank_wr_en,31,1);
 	VL_SIGW(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__dec_trigger__DOT__dec_i0_match_data,127,0,4);
 	VL_SIGW(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__dec_trigger__DOT__dec_i1_match_data,127,0,4);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__dec__DOT__dec_trigger__DOT__genblk1__BRA__0__KET____DOT__trigger_i0_match__DOT__matchvec,31,0);
@@ -2866,9 +2867,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__end_addr_dc5,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc1,18,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc2,18,0);
-	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc3,18,0);
     };
     struct {
+	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc3,18,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc4,18,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__lsu_pkt_dc5,18,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__stbuf_data_any,31,0);
@@ -2932,9 +2933,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIGW(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__buf_data_in,255,0,8);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__ibuf_addr,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__ibuf_data,31,0);
-	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__ibuf_data_in,31,0);
     };
     struct {
+	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__ibuf_data_in,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__ibuf_data_out,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__obuf_addr,31,0);
 	VL_SIG(tb_top__DOT__rvtop__DOT__swerv__DOT__pic_ctrl_inst__DOT__picm_rd_data_in,31,0);
@@ -2998,9 +2999,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__misc0eff,52,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata_in,47,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata2,47,0);
-	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata1,47,0);
     };
     struct {
+	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata1,47,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata0,47,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata1eff,47,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__ifu__DOT__aln__DOT__brdata0eff,47,0);
@@ -3064,9 +3065,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__store_data_ext_dc3,63,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__store_data_ext_dc4,63,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__store_data_ext_dc5,63,0);
-	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__ld_fwddata_lo,63,0);
     };
     struct {
+	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__ld_fwddata_lo,63,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__ld_fwddata_hi,63,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__obuf_data,63,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__swerv__DOT__lsu__DOT__bus_intf__DOT__bus_buffer__DOT__obuf_data_in,63,0);
@@ -3130,9 +3131,9 @@ VL_MODULE(Vtb_top) {
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__2__KET____DOT__SUBBANKS__BRA__3__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__3__KET____DOT__SUBBANKS__BRA__0__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__3__KET____DOT__SUBBANKS__BRA__1__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
-	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__3__KET____DOT__SUBBANKS__BRA__2__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
     };
     struct {
+	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__3__KET____DOT__SUBBANKS__BRA__2__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__icm__DOT__ic_data_inst__DOT__WAYS__BRA__3__KET____DOT__SUBBANKS__BRA__3__KET____DOT__ic_bank_sb_way_data__DOT__ram_core[256],33,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__Gen_dccm_enable__DOT__dccm__DOT__mem_bank__BRA__0__KET____DOT__dccm_bank__DOT__ram_core[2048],38,0);
 	VL_SIG64(tb_top__DOT__rvtop__DOT__mem__DOT__Gen_dccm_enable__DOT__dccm__DOT__mem_bank__BRA__1__KET____DOT__dccm_bank__DOT__ram_core[2048],38,0);
