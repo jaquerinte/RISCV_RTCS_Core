@@ -1,0 +1,108 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Dec 10 06:36:29 2019
+[*]
+[dumpfile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/sim.vcd"
+[dumpfile_mtime] "Tue Dec 10 06:26:13 2019"
+[dumpfile_size] 13267175
+[savefile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/no_ramdom_cache.gtkw"
+[timestart] 115
+[size] 1853 1025
+[pos] -29 -29
+*-2.000000 124 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_top.
+[treeopen] tb_top.rvtop.
+[treeopen] tb_top.rvtop.mem.
+[treeopen] tb_top.rvtop.mem.icm.
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(1).
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(2).
+[treeopen] tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(3).
+[treeopen] tb_top.rvtop.mem.icm.ic_tag_inst.
+[treeopen] tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).
+[treeopen] tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ic_tag_c1_cgc.
+[treeopen] tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ICACHE_SZ_16.
+[sst_width] 223
+[signals_width] 491
+[sst_expanded] 1
+[sst_vpaned_height] 301
+@28
+[color] 5
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).ic_bank_sb_way_data.CLK
+@200
+-
+-DATAICACHE
+@22
+[color] 6
+tb_top.rvtop.mem.icm.ic_data_inst.ic_rw_addr_full[31:3]
+[color] 6
+tb_top.rvtop.mem.icm.ic_data_inst.ic_rw_addr_q[11:4]
+@200
+-WAYS0
+-WORD0
+@28
+[color] 2
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).ic_bank_sb_way_data.WE
+@22
+[color] 3
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).ic_bank_sb_way_data.ADR[7:0]
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).ic_bank_sb_way_data.D[33:0]
+@23
+[color] 1
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(0).ic_bank_sb_way_data.Q[33:0]
+@200
+-WORD1
+@28
+[color] 2
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(1).ic_bank_sb_way_data.WE
+@22
+[color] 3
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(1).ic_bank_sb_way_data.ADR[7:0]
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(1).ic_bank_sb_way_data.D[33:0]
+[color] 1
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(1).ic_bank_sb_way_data.Q[33:0]
+@200
+-WORD2
+@28
+[color] 2
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(2).ic_bank_sb_way_data.WE
+@22
+[color] 3
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(2).ic_bank_sb_way_data.ADR[7:0]
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(2).ic_bank_sb_way_data.D[33:0]
+[color] 1
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(2).ic_bank_sb_way_data.Q[33:0]
+@200
+-WORD3
+@28
+[color] 2
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(3).ic_bank_sb_way_data.WE
+@22
+[color] 3
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(3).ic_bank_sb_way_data.ADR[7:0]
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(3).ic_bank_sb_way_data.D[33:0]
+[color] 1
+tb_top.rvtop.mem.icm.ic_data_inst.WAYS(0).SUBBANKS(3).ic_bank_sb_way_data.Q[33:0]
+@200
+-
+-TAGICACHE
+@22
+[color] 6
+tb_top.rvtop.mem.icm.ic_tag_inst.ic_rw_addr[31:3]
+[color] 6
+tb_top.rvtop.mem.icm.ic_tag_inst.ic_rw_addr_q[11:6]
+@200
+-WAYS0
+@28
+[color] 2
+tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ICACHE_SZ_16.ic_way_tag.WE
+@22
+[color] 3
+tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ICACHE_SZ_16.ic_way_tag.ADR[5:0]
+tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ICACHE_SZ_16.ic_way_tag.D[20:0]
+[color] 1
+tb_top.rvtop.mem.icm.ic_tag_inst.WAYS(0).ICACHE_SZ_16.ic_way_tag.Q[20:0]
+[pattern_trace] 1
+[pattern_trace] 0
