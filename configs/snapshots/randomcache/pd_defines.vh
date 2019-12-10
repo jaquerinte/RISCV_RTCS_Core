@@ -1,7 +1,7 @@
 // NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE
-// This is an automatically generated file by irodrig on mar dic  3 12:29:08 CET 2019
+// This is an automatically generated file by irodrig on mar dic 10 16:04:47 CET 2019
 //
-// cmd:    swerv -snapshot=randomcache 
+// cmd:    swerv -snapshot=randomcache -ahb_lite 
 //
 
 `include "common_defines.vh"

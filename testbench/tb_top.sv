@@ -148,10 +148,10 @@ module tb_top ( input logic core_clk, input logic reset_l, output finished);
 
    always @(posedge core_clk) begin
       //if(cycleCnt == 32'h800)
-        if(cycleCnt == 32'h800) begin
-            $display ("Hit max cycle count.. stopping");
-            $finish;
-        end
+        //if(cycleCnt == 32'hF00) begin
+        //    $display ("Hit max cycle count.. stopping");
+        //    $finish;
+        //end
    end
 
 

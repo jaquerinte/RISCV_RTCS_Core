@@ -3,7 +3,7 @@
 # 1 "<command-line>"
 # 1 "my_hello_world.s"
 # 21 "my_hello_world.s"
-# 1 "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core//configs/snapshots/default/defines.h" 1
+# 1 "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core//configs/snapshots/randomcache/defines.h" 1
 # 22 "my_hello_world.s" 2
 
 
