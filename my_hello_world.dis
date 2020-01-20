@@ -21,21 +21,17 @@ Disassembly of section .text:
   2c:	00518023          	sb	t0,0(gp) # d0580000 <hw_data+0xd057f000>
   30:	0205                	addi	tp,tp,1
   32:	fe029be3          	bnez	t0,28 <loop>
+  36:	02030313          	addi	t1,t1,32
+  3a:	0391                	addi	t2,t2,4
+  3c:	02734433          	div	s0,t1,t2
+  40:	03040413          	addi	s0,s0,48
+  44:	00818023          	sb	s0,0(gp)
 
-00000036 <_finish>:
-  36:	d05801b7          	lui	gp,0xd0580
-  3a:	0ff00293          	li	t0,255
-  3e:	00518023          	sb	t0,0(gp) # d0580000 <hw_data+0xd057f000>
-  42:	fe000ae3          	beqz	zero,36 <_finish>
-  46:	0001                	nop
-  48:	0001                	nop
-  4a:	0001                	nop
-  4c:	0001                	nop
-  4e:	0001                	nop
-  50:	0001                	nop
-  52:	0001                	nop
-  54:	0001                	nop
-  56:	0001                	nop
+00000048 <_finish>:
+  48:	d05801b7          	lui	gp,0xd0580
+  4c:	0ff00293          	li	t0,255
+  50:	00518023          	sb	t0,0(gp) # d0580000 <hw_data+0xd057f000>
+  54:	fe000ae3          	beqz	zero,48 <_finish>
   58:	0001                	nop
   5a:	0001                	nop
   5c:	0001                	nop
@@ -127,3 +123,12 @@ Disassembly of section .text:
  108:	0001                	nop
  10a:	0001                	nop
  10c:	0001                	nop
+ 10e:	0001                	nop
+ 110:	0001                	nop
+ 112:	0001                	nop
+ 114:	0001                	nop
+ 116:	0001                	nop
+ 118:	0001                	nop
+ 11a:	0001                	nop
+ 11c:	0001                	nop
+ 11e:	0001                	nop

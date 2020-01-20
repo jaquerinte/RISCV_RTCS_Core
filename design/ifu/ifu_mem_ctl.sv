@@ -497,6 +497,7 @@ module ifu_mem_ctl
 
    rvdff #(1)  unc_miss_ff     (.*, .clk(fetch_f1_f2_c1_clk), .din (uncacheable_miss_in), .dout(uncacheable_miss_ff));
    rvdffe #(31) imb_f2_ff       (.*, .en(fetch_f1_f2_c1_clken), .din ({imb_in[31:1]}), .dout({imb_ff[31:1]}));
+   // TODO FIXMEJAQUER
    rvdff #(3)  mb_rep_wayf2_ff (.*, .clk(fetch_f1_f2_c1_clk), .din ({way_status_mb_in[2:0]}), .dout({way_status_mb_ff[2:0]}));
 
    rvdff #(4)  mb_tagv_ff      (.*, .clk(fetch_f1_f2_c1_clk), .din ({tagv_mb_in[3:0]}), .dout({tagv_mb_ff[3:0]}));

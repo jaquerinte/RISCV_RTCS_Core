@@ -1,0 +1,68 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon Jan 20 09:08:12 2020
+[*]
+[dumpfile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/sim.vcd"
+[dumpfile_mtime] "Mon Jan 20 08:59:00 2020"
+[dumpfile_size] 2329132
+[savefile] "/home/irodrig/UPC/Master/PD/RISCV_RTCS_Core/div.gtkw"
+[timestart] 209
+[size] 1853 1025
+[pos] -1 -1
+*-3.000000 165 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_top.
+[treeopen] tb_top.rvtop.
+[treeopen] tb_top.rvtop.swerv.
+[treeopen] tb_top.rvtop.swerv.exu.
+[treeopen] tb_top.rvtop.swerv.exu.div_e1.
+[treeopen] tb_top.rvtop.swerv.exu.div_e1.div_e1.
+[sst_width] 332
+[signals_width] 365
+[sst_expanded] 1
+[sst_vpaned_height] 302
+@28
+tb_top.rvtop.swerv.exu.div_e1.div_e1.clk
+tb_top.rvtop.swerv.exu.div_e1.active_clk
+@200
+-Inner module
+@28
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.div_e1.finish
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.div_e1.finish_early
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.div_e1.div_stall
+[color] 3
+tb_top.rvtop.swerv.exu.div_e1.div_e1.dp[2:0]
+@22
+[color] 6
+tb_top.rvtop.swerv.exu.div_e1.div_e1.divisor[31:0]
+[color] 6
+tb_top.rvtop.swerv.exu.div_e1.div_e1.dividend[31:0]
+[color] 1
+tb_top.rvtop.swerv.exu.div_e1.div_e1.out[31:0]
+@28
+tb_top.rvtop.swerv.exu.div_e1.div_e1.flush_lower
+@200
+-Out module
+@29
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.finish
+@28
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.div_stall
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.finish_early
+@22
+[color] 1
+tb_top.rvtop.swerv.exu.div_e1.out[31:0]
+@200
+-Counter
+@28
+[color] 2
+tb_top.rvtop.swerv.exu.div_e1.running
+@22
+[color] 3
+tb_top.rvtop.swerv.exu.div_e1.counter[5:0]
+[pattern_trace] 1
+[pattern_trace] 0

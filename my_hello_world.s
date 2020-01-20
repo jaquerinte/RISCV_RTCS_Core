@@ -47,11 +47,19 @@ _start:
     li x3, STDOUT
     la x4, hw_data
     
+    
 loop:
    lb x5, 0(x4)
    sb x5, 0(x3)
    addi x4, x4, 1
    bnez x5, loop
+
+// division example
+    addi x6, x6, 32
+    addi x7, x7, 4
+    div  x8, x6, x7
+    addi x8, x8, 48
+    sb x8, 0(x3)
 
 // Write 0xff to STDOUT for TB to termiate test.
 _finish:

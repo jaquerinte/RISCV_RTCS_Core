@@ -607,8 +607,8 @@ module random_number_generator #(
 
 
    //***Dumped Internal logic***
-   assign output_number_o =  32'b00000001010000100100101111001001;
-    //assign output_number_o = 32'b00100110011111101110111100010000  ;
+   //assign output_number_o = 32'b00000001010000100100101111001001;
+   assign output_number_o = 32'b00100110011111101110111100010000  ;
     
    //***Handcrafted Internal logic*** 
    //TODO
