@@ -8,6 +8,7 @@ $RV_ROOT/design/ifu/ifu_compress_ctl.sv
 $RV_ROOT/design/ifu/ifu_ifc_ctl.sv
 $RV_ROOT/design/ifu/ifu_bp_ctl.sv
 $RV_ROOT/design/ifu/ifu_ic_mem.sv
+$RV_ROOT/design/ifu/lfsr_prng.sv
 $RV_ROOT/design/ifu/ifu_mem_ctl.sv
 $RV_ROOT/design/ifu/ifu_iccm_mem.sv
 $RV_ROOT/design/ifu/ifu.sv
